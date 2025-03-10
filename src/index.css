@@ -13,3 +13,7 @@
   --color-secondary: #F5E8DF;
   --color-latte: #FFFBF8;
 }
+
+body {
+  background-color: var(--color-secondary);
+}
