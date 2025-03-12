@@ -1,4 +1,4 @@
-import AuthPageLayout from "../../layouts/AuthPageLayout";
+import AuthPageLayout from "../../layouts/auth-page/AuthPageLayout";
 import LoginForm from "./components/LoginForm";
 
 function Login() {
