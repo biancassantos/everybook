@@ -1,10 +1,8 @@
-
+import Bookshelf from "./components/Bookshelf";
 
 function Home() {
   return (
-    <section>
-      
-    </section>
+    <Bookshelf />
   )
 }
 
