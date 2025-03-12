@@ -3,6 +3,7 @@ import Login from "./pages/login/Login";
 import Register from "./pages/register/Register";
 import Home from "./pages/home/Home";
 import MainLayout from "./layouts/MainLayout";
+import BookPage from "./pages/book/BookPage";
 
 function App() {
   return (
@@ -10,6 +11,7 @@ function App() {
       <Routes>
         <Route element={<MainLayout />}>
           <Route index element={<Home />} />
+          <Route path="/book/:id" element={<BookPage />} />
         </Route>
   
         <Route path="/login" element={<Login />} />
