@@ -9,7 +9,7 @@ function Navbar() {
     <nav className="self-start">
       <ul className="flex gap-5 justify-between">
         <NavbarLink text="My bookshelf" url="/" icon={<GiBookshelf />} />
-        <NavbarLink text="Reading now" url="/reading" icon={<GrInProgress />} />
+        <NavbarLink text="Reading now" url="/reading-now" icon={<GrInProgress />} />
         <NavbarLink text="Next readings" url="/next-readings" icon={<FaBookmark />} />
         <NavbarLink text="Favorites" url="/favorites" icon={<MdFavorite className="text-lg" />} />
       </ul>
