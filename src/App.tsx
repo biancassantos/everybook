@@ -6,6 +6,7 @@ import Home from "./pages/home/Home";
 import BookPage from "./pages/book/BookPage";
 import ReadingNow from "./pages/reading-now/ReadingNow";
 import NextReadings from "./pages/next-readings/NextReadings";
+import Favorites from "./pages/favorites/Favorites";
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
           <Route path="/book/:id" element={<BookPage />} />
           <Route path="/reading-now" element={<ReadingNow />} />
           <Route path="/next-readings" element={<NextReadings />} />
+          <Route path="/favorites" element={<Favorites />} />
         </Route>
   
         <Route path="/login" element={<Login />} />
