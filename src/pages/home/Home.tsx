@@ -1,8 +1,10 @@
-import Bookshelf from "./components/Bookshelf";
+import BookshelfLayout from "../../layouts/BookshelfLayout";
 
 function Home() {
   return (
-    <Bookshelf />
+    <BookshelfLayout>
+      
+    </BookshelfLayout>
   )
 }
 
