@@ -1,6 +1,6 @@
 import { Link } from "react-router";
 import Welcome from "./components/Welcome";
-import GoogleButton from "../../components/GoogleButton";
+import GoogleButton from "./components/GoogleButton";
 
 type AuthPageLayoutProps = {
   title: string,

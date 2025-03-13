@@ -1,4 +1,4 @@
-import googleIcon from "../assets/imgs/google-icon.png";
+import googleIcon from "../../../assets/imgs/google-icon.png";
 
 function GoogleButton() {
   return (
