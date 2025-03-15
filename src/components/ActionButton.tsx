@@ -7,7 +7,7 @@ type ActionButtonProps = React.ComponentPropsWithoutRef<"button"> & {
 
 function ActionButton({ onClick, isFilled, children }: ActionButtonProps) {
   const buttonClass = classNames(
-    "flex items-center gap-3 border border-primarydark rounded-lg py-1 px-5 font-semibold hover:border-secondary duration-300 cursor-pointer",
+    "flex items-center gap-3 border border-primarydark rounded-lg py-1 px-5 font-semibold hover:border-transparent duration-300 cursor-pointer",
     {"bg-primary text-latte border-primary! hover:border-primary!": isFilled}
   )
 
