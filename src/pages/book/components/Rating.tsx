@@ -4,8 +4,8 @@ function Rating() {
   const [rating, setRating] = useState(0)
 
   return (
-    <section className="flex flex-col gap-3 justify-self-start">
-      <p className="text-xl">
+    <section className="flex flex-col gap-3 justify-self-start self-center sm:self-start">
+      <p className="text-xl self-center sm:self-start">
         My rating
       </p>
       <div className="flex items-center gap-3">

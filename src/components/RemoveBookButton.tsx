@@ -8,7 +8,7 @@ function RemoveBookButton({ onClick }: RemoveBookButtonProps) {
   return (
     <button
     onClick={onClick}
-    className="self-start text-3xl hover:text-primarydark duration-300 cursor-pointer"
+    className="self-start text-2xl hover:text-primarydark duration-300 cursor-pointer xs:text-3xl"
     >
       <MdDelete />
     </button>

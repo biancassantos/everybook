@@ -7,14 +7,14 @@ import WantsToReadButton from "./components/WantsToReadButton";
 
 function BookPage() {
   return (
-    <section className="flex justify-between gap-8">
-      <section className="w-1/2">
+    <section className="flex flex-col items-center justify-between gap-10 sm:flex-row sm:items-start sm:gap-8">
+      <section className="w-full sm:w-1/2">
         <IndividualBook coverUrl="" bookTitle="" />
       </section>
       
-      <section className="flex flex-col gap-20 text-primarydark w-1/2">
-        <BookInfo />
-        <div className="flex gap-6 flex-wrap">
+      <section className="flex flex-col gap-20 text-primarydark w-full sm:w-1/2">
+        <BookInfo bookTitle="Grimm's Lost Princess" author="Autor" year="1920" />
+        <div className="flex justify-center gap-6 flex-wrap self-center sm:justify-normal sm:self-start">
           <ReadButton />
           <ReadingButton />
           <WantsToReadButton />

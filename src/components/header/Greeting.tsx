@@ -19,7 +19,7 @@ function Greeting() {
   }, [hours])
 
   return (
-    <p className="text-primary text-3xl font-semibold">
+    <p className="text-primary text-2xl font-semibold xs:text-3xl">
       Good {timeOfDay}, User.
     </p>
   )

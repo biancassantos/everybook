@@ -19,7 +19,7 @@ function SearchListItem({ coverUrl, bookTitle, author }: SearchListItemProps) {
         className="max-w-[60px]"
         />
         <section>
-          <h3 className="font-semibold">
+          <h3 className="text-sm font-semibold xs:text-base">
             {bookTitle}
           </h3>
           <p className="text-sm">

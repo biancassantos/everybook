@@ -16,7 +16,7 @@ function Searchbar() {
       type="text"
       placeholder="Search new book..."
       value={search}
-      className="py-1 px-2"
+      className="max-w-[150px] py-1 px-2 sm:max-w-full"
       onChange={e => setSearch(e.target.value)}
       />
       <button

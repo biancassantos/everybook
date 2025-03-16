@@ -8,7 +8,7 @@ function IndividualBook({ coverUrl, bookTitle }: IndividualBookProps) {
     <img 
     src={coverUrl} 
     alt={`${bookTitle}'s book cover`}
-    className="w-[55%] shadow-book mx-auto"
+    className="w-[65%] shadow-book mx-auto sm:w-[70%] lg:w-[55%]"
     />
   )
 }

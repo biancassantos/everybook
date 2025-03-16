@@ -15,6 +15,11 @@
 
   /* --- Shadows --- */
   --shadow-book: -4px 4px 16px 8px rgba(0, 0, 0, .15);
+
+  /* --- Breakpoints --- */
+  --breakpoint-md: 740px;
+  --breakpoint-sm: 620px;
+  --breakpoint-xs: 390px;
 }
 
 body {

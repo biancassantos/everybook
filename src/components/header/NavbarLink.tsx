@@ -12,9 +12,12 @@ function NavbarLink({ text, url, icon }: NavbarLinkProps) {
     <li>
       <NavLink 
       to={url}
-      className="flex items-center gap-3 py-1 px-4 border border-primary rounded-full text-primary [.active]:text-latte [.active]:bg-primary font-semibold hover:not-[.active]:border-transparent hover:not-[.active]:text-primarydark duration-300"
+      className="group flex items-center gap-3 h-[40px] not-[.active]:w-[40px] py-1 px-3 border border-primary rounded-full text-sm text-primary [.active]:text-latte [.active]:bg-primary font-semibold hover:not-[.active]:border-transparent hover:not-[.active]:text-primarydark duration-300 xs:h-[35px] xs:not-[.active]:w-auto xs:text-base xs:px-4"
       >
-        {icon} {text}
+        {icon}
+        <span className="group-[.active]:inline hidden md:inline">
+          {text}
+        </span>
       </NavLink>
     </li>
   )

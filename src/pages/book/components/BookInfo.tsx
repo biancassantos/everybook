@@ -10,13 +10,13 @@ function BookInfo({ bookTitle, author, year }: BookInfoProps) {
   return (
     <section className="flex flex-col gap-5">
       <div className="flex justify-between items-center gap-4 w-fit">
-        <h1 className="font-playfair text-4xl">
+        <h1 className="font-playfair text-3xl xs:text-4xl">
           {bookTitle}
         </h1>
         <FavoriteButton />
       </div>
-      <p className="text-2xl">{author}</p>
-      <p className="text-2xl">{year}</p>
+      <p className="text-xl xs:text-2xl">{author}</p>
+      <p className="text-xl xs:text-2xl">{year}</p>
     </section>
   )
 }

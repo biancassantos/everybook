@@ -48,7 +48,7 @@ function SettingsForm() {
         className={inputClass}
         />
       </section>
-      <section className="flex gap-5 mt-8">
+      <section className="flex gap-5 flex-wrap mt-8">
         <ActionButton
         isFilled={true}
         >

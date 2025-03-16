@@ -5,7 +5,7 @@ function MainLayout() {
   return (
     <>
       <Header />
-      <main className="py-20 px-10">
+      <main className="py-16 px-5 sm:py-20 sm:px-10">
         <Outlet />
       </main>
     </>

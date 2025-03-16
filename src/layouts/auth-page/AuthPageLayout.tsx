@@ -12,10 +12,10 @@ type AuthPageLayoutProps = {
 
 function AuthPageLayout({ title, question, linkText, linkUrl, children }: AuthPageLayoutProps) {
   return (
-    <main className="flex justify-between min-h-screen h-full bg-secondary">
+    <main className="flex flex-col justify-between min-h-screen h-full bg-secondary md:flex-row">
       <Welcome />
 
-      <section className="bg-white w-[40%] pt-16 pb-12 px-8 rounded-l-2xl flex flex-col items-center gap-9">
+      <section className="bg-white w-full pt-16 pb-12 px-5 rounded-l-2xl flex flex-col items-center gap-9 xs:px-8 md:w-[40%]">
         <h2 className="text-3xl">
           {title}
         </h2>
