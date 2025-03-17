@@ -1,13 +1,17 @@
 import { useState } from "react";
+import useDebounce from "../../hooks/useDebounce";
 import { IoSearch, IoClose } from "react-icons/io5"
 import SearchList from "./SearchList";
 
 function Searchbar() {
   const [search, setSearch] = useState("")
+  const [debouncedSearch, setDebouncedSearch] = useState("")
 
-  const clearSearch = () => {
-    setSearch("")
-  }
+  const debouncer = useDebounce(() => setDebouncedSearch(search), 1000);
+
+  debouncer();
+
+  const clearSearch = () => setSearch("");
 
   return (
     <section className="flex items-center gap-2 border border-primary bg-latte rounded-full py-1 px-4 self-end relative">
@@ -26,7 +30,7 @@ function Searchbar() {
         <IoClose className="text-primary text-xl" />
       </button>
 
-      {search != "" && <SearchList />}
+      {debouncedSearch != "" && <SearchList searchText={debouncedSearch} />}
     </section>
   )
 }
