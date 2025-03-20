@@ -8,11 +8,10 @@ export type Book = {
 }
 
 export type BookProps = {
-  coverUrl: string,
+  coverUrl?: string,
   bookTitle: string,
-  bookUrl: string,
-  author: string,
-  year: string
+  author?: string,
+  year?: string
 }
 
 export type LayoutProps = {
