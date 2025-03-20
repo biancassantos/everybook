@@ -1,12 +1,7 @@
 import { Link } from "react-router";
+import type { BookProps } from "../@types/types";
 
-type ShelfBookProps = {
-  coverUrl: string,
-  bookTitle: string,
-  bookUrl: string
-}
-
-function ShelfBook({ coverUrl, bookTitle, bookUrl }: ShelfBookProps) {
+function ShelfBook({ coverUrl, bookTitle, bookUrl }: BookProps) {
   return (
     <section className="flex justify-center items-end border-b-16 border-primary">
       <Link to={bookUrl}>

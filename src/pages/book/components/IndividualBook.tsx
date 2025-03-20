@@ -1,9 +1,6 @@
-type IndividualBookProps = {
-  coverUrl: string,
-  bookTitle: string
-}
+import type { BookProps } from "../../../@types/types";
 
-function IndividualBook({ coverUrl, bookTitle }: IndividualBookProps) {
+function IndividualBook({ coverUrl, bookTitle }: BookProps) {
   return (
     <img 
     src={coverUrl} 

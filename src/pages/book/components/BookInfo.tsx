@@ -1,12 +1,7 @@
 import FavoriteButton from "./FavoriteButton";
+import type { BookProps } from "../../../@types/types";
 
-type BookInfoProps = {
-  bookTitle: string,
-  author: string,
-  year: string
-}
-
-function BookInfo({ bookTitle, author, year }: BookInfoProps) {
+function BookInfo({ bookTitle, author, year }: BookProps) {
   return (
     <section className="flex flex-col gap-5">
       <div className="flex justify-between items-center gap-4 w-fit">

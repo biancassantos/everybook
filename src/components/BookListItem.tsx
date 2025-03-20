@@ -1,13 +1,8 @@
 import { Link } from "react-router";
 import RemoveBookButton from "./RemoveBookButton";
+import type { BookProps } from "../@types/types";
 
-type BookListItemProps = {
-  coverUrl: string,
-  bookTitle: string,
-  author: string
-}
-
-function BookListItem({ coverUrl, bookTitle, author }: BookListItemProps) {
+function BookListItem({ coverUrl, bookTitle, author }: BookProps) {
   return (
     <li className="flex justify-between text-primary py-6 px-3 border-b border-b-primary xs:py-8 xs:px-5 sm:py-10 sm:px-8">
       <div className="flex gap-3 xs:gap-6 sm:gap-8">
