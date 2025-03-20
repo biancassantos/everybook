@@ -15,6 +15,7 @@ function SearchList({ books }: SearchListProps) {
           bookTitle={book.title}
           author={book.author_name}
           coverUrl={`https://covers.openlibrary.org/b/olid/${book.cover_edition_key}-S.jpg`}
+          bookKey={book.key}
           />
         })}
       </ul>

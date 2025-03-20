@@ -1,16 +1,21 @@
 import { Link } from "react-router";
+import { formatToUrlParam } from "../../utils/helpers";
 
 type SearchListItemProps = {
   coverUrl: string,
   bookTitle: string,
-  author: string
+  author: string,
+  bookKey: string
 }
 
-function SearchListItem({ coverUrl, bookTitle, author }: SearchListItemProps) {
+function SearchListItem({ coverUrl, bookTitle, author, bookKey }: SearchListItemProps) {
+  const formattedTitle = formatToUrlParam(bookTitle);
+  const formattedKey = bookKey.split("/")[2];
+
   return (
     <li className="p-4 not-last:border-b border-b-primary">
       <Link 
-      to=""
+      to={`/book/${formattedTitle}/${formattedKey}`}
       className="flex items-start gap-3 text-primarydark"
       >
         <img 

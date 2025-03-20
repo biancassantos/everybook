@@ -10,4 +10,14 @@ async function getBooks(bookName: string) {
   }
 }
 
-export default { getBooks }
+async function getBook(bookName: string, key: string) {
+  try {
+    const request = await axios.get(`https://openlibrary.org/search.json?q=${bookName}/works/${key}`);
+    return request.data.docs;
+
+  } catch (error) {
+    console.error(`Error fetching books: ${error}`)
+  }
+}
+
+export default { getBooks, getBook }

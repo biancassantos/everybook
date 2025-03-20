@@ -3,6 +3,7 @@ import useDebounce from "../../hooks/useDebounce";
 import bookApi from "../../services/api";
 import { IoSearch, IoClose } from "react-icons/io5"
 import SearchList from "./SearchList";
+import { formatToUrlParam } from "../../utils/helpers";
 import type { Book } from "../../@types/types";
 
 function Searchbar() {
@@ -14,14 +15,10 @@ function Searchbar() {
 
   const clearSearch = () => setSearch("");
 
-  const formatSearchInput = (text: string) => {
-    return text.trim().toLowerCase().split(" ").join("+");
-  }
-
   useEffect(() => {
     if (debouncedSearch) {
       bookApi
-        .getBooks(formatSearchInput(debouncedSearch))
+        .getBooks(formatToUrlParam(debouncedSearch))
         .then(data => setBooks(data))
     }
   }, [debouncedSearch])

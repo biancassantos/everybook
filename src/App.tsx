@@ -15,7 +15,7 @@ function App() {
       <Routes>
         <Route element={<MainLayout />}>
           <Route index element={<Home />} />
-          <Route path="/book/:id" element={<BookPage />} />
+          <Route path="/book/:name/:key" element={<BookPage />} />
           <Route path="/reading-now" element={<ReadingNow />} />
           <Route path="/next-readings" element={<NextReadings />} />
           <Route path="/favorites" element={<Favorites />} />
