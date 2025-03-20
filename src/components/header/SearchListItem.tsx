@@ -11,12 +11,12 @@ function SearchListItem({ coverUrl, bookTitle, author }: SearchListItemProps) {
     <li className="p-4 not-last:border-b border-b-primary">
       <Link 
       to=""
-      className="flex gap-3 text-primarydark"
+      className="flex items-start gap-3 text-primarydark"
       >
         <img 
         src={coverUrl} 
         alt={`${bookTitle}'s book cover`}
-        className="max-w-[60px]"
+        className="w-full max-w-[50px]"
         />
         <section>
           <h3 className="text-sm font-semibold xs:text-base">
