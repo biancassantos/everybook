@@ -1,17 +1,32 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import useDebounce from "../../hooks/useDebounce";
+import bookApi from "../../services/api";
 import { IoSearch, IoClose } from "react-icons/io5"
 import SearchList from "./SearchList";
+import type { Book } from "../../@types/types";
 
 function Searchbar() {
   const [search, setSearch] = useState("")
   const [debouncedSearch, setDebouncedSearch] = useState("")
+  const [books, setBooks] = useState<Book[]>([])
 
   const debouncer = useDebounce(() => setDebouncedSearch(search), 1000);
 
-  debouncer();
-
   const clearSearch = () => setSearch("");
+
+  const formatSearchInput = (text: string) => {
+    return text.trim().toLowerCase().split(" ").join("+");
+  }
+
+  useEffect(() => {
+    if (debouncedSearch) {
+      bookApi
+        .getBooks(formatSearchInput(debouncedSearch))
+        .then(data => setBooks(data))
+    }
+  }, [debouncedSearch])
+
+  debouncer();
 
   return (
     <section className="flex items-center gap-2 border border-primary bg-latte rounded-full py-1 px-4 self-end relative">
@@ -30,7 +45,7 @@ function Searchbar() {
         <IoClose className="text-primary text-xl" />
       </button>
 
-      {debouncedSearch != "" && <SearchList searchText={debouncedSearch} />}
+      {debouncedSearch != "" && <SearchList books={books} />}
     </section>
   )
 }
