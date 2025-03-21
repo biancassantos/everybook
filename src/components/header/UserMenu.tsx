@@ -1,4 +1,5 @@
-import { Link } from "react-router";
+import { Link, useNavigate } from "react-router";
+import { logout } from "../../services/firebase";
 import classNames from "classnames";
 
 type UserMenuProps = {
@@ -7,9 +8,15 @@ type UserMenuProps = {
 }
 
 function UserMenu({ isOpen, setIsOpen }: UserMenuProps) {
-  const navClass = classNames("absolute right-7 top-20 z-100 shadow-lg invisible xs:top-19 sm:right-12",
-    {"visible": isOpen}
-  )
+  const navigate = useNavigate();
+
+  const signOut = () => {
+    setIsOpen(false);
+    logout();
+    navigate("/login");
+  }
+
+  const navClass = classNames("absolute right-7 top-20 z-100 shadow-lg invisible xs:top-19 sm:right-12", {"visible": isOpen})
 
   return (
     <nav className={navClass}>
@@ -25,7 +32,7 @@ function UserMenu({ isOpen, setIsOpen }: UserMenuProps) {
         </li>
         <li className="p-3 text-center">
           <button 
-          onClick={() => setIsOpen(false)}
+          onClick={signOut}
           className="font-semibold w-full cursor-pointer active:scale-90 transition-transform duration-300"
           >
             Logout
