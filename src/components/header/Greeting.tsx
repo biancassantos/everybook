@@ -1,7 +1,12 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
+import { UserContext } from "../../contexts/UserContext";
 
 function Greeting() {
   const [timeOfDay, setTimeOfDay] = useState("morning");
+
+  const currentUser = useContext(UserContext);
+
+  const name = currentUser?.user?.displayName?.split(" ")[0];
 
   const date = new Date();
   const hours = date.getHours();
@@ -18,9 +23,11 @@ function Greeting() {
     }
   }, [hours])
 
+  if (currentUser?.isAuthPending) return <div></div>
+
   return (
     <p className="text-primary text-2xl font-semibold xs:text-3xl">
-      Good {timeOfDay}, User.
+      Good {timeOfDay}, {name ? name : "User"}.
     </p>
   )
 }
