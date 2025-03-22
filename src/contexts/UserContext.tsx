@@ -31,10 +31,11 @@ export function UserContextProvider({ children }: UserContextProviderProps) {
           uid: data.uid
         }
         setUser(userData);
-        setIsAuthPending(false);
       } else {
         setUser(null);
       }
+      
+      setIsAuthPending(false);
     })
 
     return () => unsubscribe();
