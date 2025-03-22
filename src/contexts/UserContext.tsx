@@ -1,5 +1,6 @@
 import { createContext, useState, useEffect } from "react";
 import { auth } from "../services/firebase-config";
+import { getUserFirstName } from "../utils/helpers";
 
 export const UserContext = createContext<ContextValue | null>(null);
 
@@ -26,7 +27,7 @@ export function UserContextProvider({ children }: UserContextProviderProps) {
     const unsubscribe = auth.onAuthStateChanged(data => {
       if (data) {
         const userData: User = {
-          displayName: data.displayName,
+          displayName: getUserFirstName(data.displayName),
           email: data.email,
           uid: data.uid
         }

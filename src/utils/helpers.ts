@@ -15,3 +15,10 @@ export const getErrorMessage = (error: unknown) => {
     return error;
   }
 }
+
+/* Gets the user first name if the display name is provided */
+export const getUserFirstName = (displayName: string | null) => {
+  if (displayName === null) return null;
+
+  return displayName.split(" ")[0];
+}

@@ -6,7 +6,7 @@ function Greeting() {
 
   const currentUser = useContext(UserContext);
 
-  const name = currentUser?.user?.displayName?.split(" ")[0];
+  const name = currentUser?.user?.displayName;
 
   const date = new Date();
   const hours = date.getHours();
