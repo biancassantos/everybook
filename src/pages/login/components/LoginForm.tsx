@@ -83,7 +83,7 @@ function LoginForm() {
         {errors.password && <span className={errorClass}>{errors.password.message}</span>}
       </section>
       <p className="text-sm self-end">
-        <Link to="#" className=" hover:text-primarydark duration-300">
+        <Link to="/forgot-password" className=" hover:text-primarydark duration-300">
           Forgot your password?
         </Link>
       </p>
