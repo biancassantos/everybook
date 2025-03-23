@@ -18,6 +18,7 @@ function Login() {
     question="Need an account? "
     linkText="Register now"
     linkUrl="/register"
+    isFullLayout={true}
     >
       <LoginForm />
     </AuthPageLayout>

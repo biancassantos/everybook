@@ -18,6 +18,7 @@ function Register() {
     question="Already has an account? "
     linkText="Sign in"
     linkUrl="/login"
+    isFullLayout={true}
     >
       <RegisterForm />
     </AuthPageLayout>

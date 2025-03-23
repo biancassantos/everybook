@@ -4,13 +4,14 @@ import GoogleButton from "./components/GoogleButton";
 
 type AuthPageLayoutProps = {
   title: string,
-  question: string,
-  linkText: string,
-  linkUrl: string,
+  question?: string,
+  linkText?: string,
+  linkUrl?: string,
+  isFullLayout: boolean
   children: React.ReactNode
 }
 
-function AuthPageLayout({ title, question, linkText, linkUrl, children }: AuthPageLayoutProps) {
+function AuthPageLayout({ title, question, linkText, linkUrl, isFullLayout, children }: AuthPageLayoutProps) {
   return (
     <main className="flex flex-col justify-between min-h-screen h-full bg-secondary md:flex-row">
       <Welcome />
@@ -20,21 +21,28 @@ function AuthPageLayout({ title, question, linkText, linkUrl, children }: AuthPa
           {title}
         </h2>
 
-        <GoogleButton />
-
-        <span className="text-sm">Or</span>
-
-        {children} {/* Where the form is rendered */}
-
-        <p className="text-sm">
-          {question} 
-          <Link 
-          to={linkUrl} 
-          className="font-semibold hover:text-primarydark duration-300"
-          >
-            {linkText}
-          </Link>
-        </p>
+        {isFullLayout ? (
+          <>
+            <GoogleButton />
+            <span className="text-sm">
+              Or
+            </span>
+            {children}
+            <p className="text-sm">
+              {question} 
+              <Link 
+              to={linkUrl as string} 
+              className="font-semibold hover:text-primarydark duration-300"
+              >
+                {linkText}
+              </Link>
+            </p>
+          </>
+        ) : (
+          <>
+            {children}
+          </>
+        )}
       </section>
     </main>
   )
