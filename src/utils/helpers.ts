@@ -9,7 +9,9 @@ export const getErrorMessage = (error: unknown) => {
       return "This e-mail is already in use";
 
     } else if (error.message.includes("invalid-credential")) {
-      return "This user is invalid or non-existent";
+      return "Invalid credentials";
+    } else {
+      return "It was not possible to complete the action";
     }
   } else if (typeof error === "string") {
     return error;
