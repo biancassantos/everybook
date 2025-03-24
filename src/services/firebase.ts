@@ -1,5 +1,5 @@
 import { auth, googleProvider } from "./firebase-config";
-import { createUserWithEmailAndPassword, signInWithEmailAndPassword, signInWithPopup, signOut, sendPasswordResetEmail } from "firebase/auth";
+import { createUserWithEmailAndPassword, signInWithEmailAndPassword, signInWithPopup, signOut, sendPasswordResetEmail, updateProfile, EmailAuthProvider, reauthenticateWithCredential, updatePassword } from "firebase/auth";
 
 export const signUpWithEmail = async (email: string, password: string) => {
   await createUserWithEmailAndPassword(auth, email, password);
@@ -23,4 +23,19 @@ export const logout = async () => {
 
 export const resetPassword = async (email: string) => {
   await sendPasswordResetEmail(auth, email);
+}
+
+export const changeDisplayName = async (newDisplayName: string) => {
+  if (auth.currentUser) {
+    await updateProfile(auth.currentUser, {displayName: newDisplayName});
+  }
+}
+
+export const changeUserPassword = async (password: string, newPassword: string) => {
+  if (auth.currentUser) {
+    const email = auth.currentUser.email as string;
+    const credential = EmailAuthProvider.credential(email, password);
+    await reauthenticateWithCredential(auth.currentUser, credential);
+    await updatePassword(auth.currentUser, newPassword);
+  }
 }
