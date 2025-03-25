@@ -15,6 +15,6 @@ export type BookProps = {
   bookKey? : string
 }
 
-export type LayoutProps = {
+export type NodeChildrenProps = {
   children: React.ReactNode
 }

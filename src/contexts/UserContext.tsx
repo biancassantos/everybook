@@ -1,12 +1,9 @@
 import { createContext, useState, useEffect } from "react";
 import { auth } from "../services/firebase-config";
 import { getUserFirstName } from "../utils/helpers";
+import { NodeChildrenProps } from "../@types";
 
 export const UserContext = createContext<ContextValue | null>(null);
-
-type UserContextProviderProps = {
-  children: React.ReactNode
-}
 
 type User = {
   displayName: string | null,
@@ -19,7 +16,7 @@ type ContextValue = {
   isAuthPending: boolean
 }
 
-export function UserContextProvider({ children }: UserContextProviderProps) {
+export function UserContextProvider({ children }: NodeChildrenProps) {
   const [user, setUser] = useState<User | null>(null);
   const [isAuthPending, setIsAuthPending] = useState(true);
 
