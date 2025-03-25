@@ -1,16 +1,10 @@
 import { Link } from "react-router";
 import { formatToUrlParam } from "../../utils/helpers";
+import type { BookProps } from "../../@types/types";
 
-type SearchListItemProps = {
-  coverUrl: string,
-  bookTitle: string,
-  author: string,
-  bookKey: string
-}
-
-function SearchListItem({ coverUrl, bookTitle, author, bookKey }: SearchListItemProps) {
+function SearchListItem({ coverUrl, bookTitle, author, bookKey }: BookProps) {
   const formattedTitle = formatToUrlParam(bookTitle);
-  const formattedKey = bookKey.split("/")[2];
+  const formattedKey = (bookKey as string).split("/")[2];
 
   return (
     <li className="p-4 not-last:border-b border-b-primary">

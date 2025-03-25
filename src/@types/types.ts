@@ -11,7 +11,8 @@ export type BookProps = {
   coverUrl?: string,
   bookTitle: string,
   author?: string,
-  year?: string
+  year?: string,
+  bookKey? : string
 }
 
 export type LayoutProps = {
