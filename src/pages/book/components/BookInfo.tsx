@@ -1,5 +1,5 @@
 import FavoriteButton from "./FavoriteButton";
-import type { BookProps } from "../../../@types/types";
+import type { BookProps } from "../../../@types";
 
 function BookInfo({ bookTitle, author, year }: BookProps) {
   return (

@@ -1,6 +1,6 @@
 import { Link } from "react-router";
 import RemoveBookButton from "./RemoveBookButton";
-import type { BookProps } from "../@types/types";
+import type { BookProps } from "../@types";
 
 function BookListItem({ coverUrl, bookTitle, author }: BookProps) {
   return (

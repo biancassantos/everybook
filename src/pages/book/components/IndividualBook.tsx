@@ -1,4 +1,4 @@
-import type { BookProps } from "../../../@types/types";
+import type { BookProps } from "../../../@types";
 
 function IndividualBook({ coverUrl, bookTitle }: BookProps) {
   return (

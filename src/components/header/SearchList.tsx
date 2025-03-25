@@ -1,5 +1,5 @@
 import SearchListItem from "./SearchListItem";
-import type { Book } from "../../@types/types";
+import type { Book } from "../../@types";
 
 type SearchListProps = {
   books: Book[]

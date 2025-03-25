@@ -1,4 +1,4 @@
-import type { LayoutProps } from "../@types/types";
+import type { LayoutProps } from "../@types";
 
 function BookshelfLayout({ children }: LayoutProps) {
   return (

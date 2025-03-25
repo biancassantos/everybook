@@ -7,7 +7,7 @@ import Rating from "./components/Rating";
 import ReadButton from "./components/ReadButton";
 import ReadingButton from "./components/ReadingButton";
 import WantsToReadButton from "./components/WantsToReadButton";
-import type { Book } from "../../@types/types";
+import type { Book } from "../../@types";
 
 function BookPage() {
   const [book, setBook] = useState<Book | null>(null);

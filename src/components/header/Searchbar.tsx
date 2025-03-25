@@ -4,7 +4,7 @@ import bookApi from "../../services/api";
 import { IoSearch, IoClose } from "react-icons/io5"
 import SearchList from "./SearchList";
 import { formatToUrlParam } from "../../utils/helpers";
-import type { Book } from "../../@types/types";
+import type { Book } from "../../@types";
 
 function Searchbar() {
   const [search, setSearch] = useState("")

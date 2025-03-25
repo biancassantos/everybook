@@ -1,6 +1,6 @@
 import { Link } from "react-router";
 import { formatToUrlParam } from "../../utils/helpers";
-import type { BookProps } from "../../@types/types";
+import type { BookProps } from "../../@types";
 
 function SearchListItem({ coverUrl, bookTitle, author, bookKey }: BookProps) {
   const formattedTitle = formatToUrlParam(bookTitle);
