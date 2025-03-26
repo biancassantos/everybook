@@ -2,16 +2,17 @@ import { useContext } from "react";
 import { BooksContext } from "../../contexts/BooksContext";
 import BookListLayout from "../../layouts/BookListLayout";
 import BookListItem from "../../components/BookListItem";
+import EmptyMessage from "../../components/EmptyMessage";
 
 function ReadingNow() {
   const books = useContext(BooksContext);
   const readingBooks = books?.allBooks.filter(book => book.reading === true);
 
-  if (!readingBooks) return <p>Not reading any books.</p>
+  if (readingBooks && readingBooks?.length == 0) return <EmptyMessage msg="Not reading any books." />;
 
   return (
     <BookListLayout>
-      {readingBooks.map(book => {
+      {readingBooks?.map(book => {
         return <BookListItem 
         key={book.key}
         bookTitle={book.title}

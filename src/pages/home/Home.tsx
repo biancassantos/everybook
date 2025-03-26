@@ -2,12 +2,13 @@ import { useContext } from "react";
 import { BooksContext } from "../../contexts/BooksContext";
 import BookshelfLayout from "../../layouts/BookshelfLayout";
 import ShelfBook from "../../components/ShelfBook";
+import EmptyMessage from "../../components/EmptyMessage";
 
 function Home() {
   const books = useContext(BooksContext);
   const readBooks = books?.allBooks.filter(book => book.read === true);
 
-  if (!readBooks) return <p>No read books yet.</p>
+  if (readBooks && readBooks?.length == 0) return <EmptyMessage msg="No read books yet." />;
 
   return (
     <BookshelfLayout>
