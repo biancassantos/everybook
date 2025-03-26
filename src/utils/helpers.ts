@@ -1,3 +1,6 @@
+import { UserBook } from "../@types";
+
+/* Formats the book title into an url search text */
 export const formatToUrlParam = (text: string) => {
   return text.trim().replace("'", "").toLowerCase().split(" ").join("+");
 }
@@ -23,4 +26,30 @@ export const getUserFirstName = (displayName: string | null) => {
   if (displayName === null) return null;
 
   return displayName.split(" ")[0];
+}
+
+/* Functions for checking if the book exists in the db and it's state */
+export const bookExists = (books: UserBook[], key: string) => {
+  const book = books.filter(book => book.key === key );
+  return book ? book[0] : null;
+}
+
+export const isBookRead = (books: UserBook[], key: string) => {
+  const book = books.some(book => book.key === key && book.read === true);
+  return book ? true : false;
+}
+
+export const isReadingBook = (books: UserBook[], key: string) => {
+  const book = books.some(book => book.key === key && book.reading === true);
+  return book ? true : false;
+}
+
+export const wantsToReadBook = (books: UserBook[], key: string) => {
+  const book = books.some(book => book.key === key && book.wants_to_read === true);
+  return book ? true : false;
+}
+
+export const isBookFavorite = (books: UserBook[], key: string) => {
+  const book = books.some(book => book.key === key && book.is_favorite === true);
+  return book ? true : false;
 }

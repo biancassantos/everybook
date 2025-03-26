@@ -1,9 +1,36 @@
+import { useContext } from "react";
+import { BooksContext } from "../../../contexts/BooksContext";
 import ActionButton from "../../../components/ActionButton";
-import { FaCheck } from "react-icons/fa"
+import { addBook, updateBook } from "../../../services/firebase";
+import { bookExists, isBookRead } from "../../../utils/helpers";
+import { FaCheck } from "react-icons/fa";
+import type { UserBook } from "../../../@types";
 
-function ReadButton() {
+function ReadButton({ newBook }: {newBook: UserBook}) {
+  const books = useContext(BooksContext);
+
+  const book = bookExists(books?.allBooks as UserBook[], newBook.key);
+  const bookIsRead = isBookRead(books?.allBooks as UserBook[], newBook.key);
+  const id = book?.id ? book.id : undefined;
+
+  const onClick = () => {
+    if (book && bookIsRead && id) {
+      updateBook(id , {...book, read: false});
+
+    } else if (book && !bookIsRead && id) {
+      updateBook(id, {...book, read: true});
+
+    } else {
+      if (books?.booksCollectionRef)
+        addBook(books?.booksCollectionRef, {...newBook, read: true});
+    }
+  }
+
   return (
-    <ActionButton isFilled={false}>
+    <ActionButton 
+    onClick={onClick}
+    isFilled={bookIsRead}
+    >
       <FaCheck /> Read
     </ActionButton>
   )

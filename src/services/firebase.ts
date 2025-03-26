@@ -1,5 +1,7 @@
-import { auth, googleProvider } from "./firebase-config";
+import { auth, db, googleProvider } from "./firebase-config";
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword, signInWithPopup, signOut, sendPasswordResetEmail, updateProfile, EmailAuthProvider, reauthenticateWithCredential, updatePassword } from "firebase/auth";
+import { addDoc, updateDoc, doc } from "firebase/firestore";
+import type { BooksCollection, UserBook } from "../@types";
 
 export const signUpWithEmail = async (email: string, password: string) => {
   await createUserWithEmailAndPassword(auth, email, password);
@@ -37,5 +39,22 @@ export const changeUserPassword = async (password: string, newPassword: string) 
     const credential = EmailAuthProvider.credential(email, password);
     await reauthenticateWithCredential(auth.currentUser, credential);
     await updatePassword(auth.currentUser, newPassword);
+  }
+}
+
+export const addBook = async (colRef: BooksCollection, book: UserBook) => {
+  try {
+    await addDoc(colRef, book);
+  } catch (error) {
+    console.error(error);
+  }
+}
+
+export const updateBook = async (id: string, book: UserBook) => {
+  try {
+    const bookDoc = doc(db, "books", id);
+    await updateDoc(bookDoc, book);
+  } catch (error) {
+    console.error(error);
   }
 }
