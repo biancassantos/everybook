@@ -1,3 +1,5 @@
+import { CollectionReference, DocumentData } from "firebase/firestore";
+
 export type Book = {
   title: string,
   author_name: string,
@@ -18,3 +20,16 @@ export type BookProps = {
 export type NodeChildrenProps = {
   children: React.ReactNode
 }
+
+export type UserBook = Book & {
+  book_url: string,
+  uid: string | undefined,
+  id?: string,
+  read: boolean,
+  reading: boolean,
+  wants_to_read: boolean,
+  is_favorite: boolean,
+  rating?: number
+}
+
+export type BooksCollection = CollectionReference<DocumentData, DocumentData>;
