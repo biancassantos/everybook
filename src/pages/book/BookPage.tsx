@@ -59,8 +59,8 @@ function BookPage() {
         />
         <div className="flex justify-center gap-6 flex-wrap self-center sm:justify-normal sm:self-start">
           <ReadButton newBook={newBook} />
-          <ReadingButton />
-          <WantsToReadButton />
+          <ReadingButton newBook={newBook} />
+          <WantsToReadButton newBook={newBook} />
         </div>
         <Rating />
       </section>
