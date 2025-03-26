@@ -2,11 +2,11 @@ import { Link } from "react-router";
 import RemoveBookButton from "./RemoveBookButton";
 import type { BookProps } from "../@types";
 
-function BookListItem({ coverUrl, bookTitle, author }: BookProps) {
+function BookListItem({ coverUrl, bookTitle, author, bookUrl }: BookProps) {
   return (
     <li className="flex justify-between text-primary py-6 px-3 border-b border-b-primary xs:py-8 xs:px-5 sm:py-10 sm:px-8">
       <div className="flex gap-3 xs:gap-6 sm:gap-8">
-        <Link to="">
+        <Link to={bookUrl}>
           <img 
           src={coverUrl} 
           alt={`${bookTitle}'s book cover`}

@@ -14,7 +14,8 @@ export type BookProps = {
   bookTitle: string,
   author?: string,
   year?: string,
-  bookKey? : string
+  bookKey? : string,
+  bookUrl?: string
 }
 
 export type NodeChildrenProps = {
