@@ -11,6 +11,7 @@ import Rating from "./components/Rating";
 import ReadButton from "./components/ReadButton";
 import ReadingButton from "./components/ReadingButton";
 import WantsToReadButton from "./components/WantsToReadButton";
+import Spinner from "../../components/Spinner";
 import type { UserBook } from "../../@types";
 
 function BookPage() {
@@ -19,7 +20,7 @@ function BookPage() {
   const currentUser = useContext(UserContext);
   const books = useContext(BooksContext);
 
-  const { data: book } = useSuspenseQuery({
+  const { data: book, isPending, isFetching } = useSuspenseQuery({
     queryKey: ["individualBook", name, key],
     queryFn: () => bookApi.getBook(name as string, key as string)
   });
@@ -42,7 +43,7 @@ function BookPage() {
     rating: 0
   }
 
-  if (!book) return <h1>Loading...</h1>
+  if (isPending || isFetching) return <Spinner />;
 
   return (
     <section className="flex flex-col items-center justify-between gap-10 sm:flex-row sm:items-start sm:gap-8">

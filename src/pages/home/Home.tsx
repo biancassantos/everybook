@@ -3,12 +3,15 @@ import { BooksContext } from "../../contexts/BooksContext";
 import BookshelfLayout from "../../layouts/BookshelfLayout";
 import ShelfBook from "../../components/ShelfBook";
 import EmptyMessage from "../../components/EmptyMessage";
+import Spinner from "../../components/Spinner";
 
 function Home() {
   const books = useContext(BooksContext);
   const readBooks = books?.allBooks.filter(book => book.read === true);
 
   if (readBooks && readBooks?.length == 0) return <EmptyMessage msg="No read books yet." />;
+
+  if (!books) return <Spinner />;
 
   return (
     <BookshelfLayout>
