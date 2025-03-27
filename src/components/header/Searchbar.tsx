@@ -39,7 +39,7 @@ function Searchbar() {
         <IoClose className="text-primary text-xl" />
       </button>
 
-      {search != "" && <SearchList books={books} />}
+      {search != "" && <SearchList books={books} clearSearch={clearSearch} />}
     </section>
   )
 }
