@@ -10,6 +10,7 @@ import ReadingNow from "./pages/reading-now/ReadingNow";
 import NextReadings from "./pages/next-readings/NextReadings";
 import Favorites from "./pages/favorites/Favorites";
 import Settings from "./pages/settings/Settings";
+import NotFound from "./pages/not-found/NotFound";
 
 function App() {
   return (
@@ -29,6 +30,7 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route path="/forgot-password" element={<ForgotPassword />} />
+        <Route path="*" element={<NotFound />} />
       </Routes>
     </BrowserRouter>
   )
