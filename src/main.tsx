@@ -4,13 +4,18 @@ import './index.css'
 import App from './App.tsx'
 import { UserContextProvider } from './contexts/UserContext.tsx'
 import { BooksContextProvider } from './contexts/BooksContext.tsx'
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
+
+const queryClient = new QueryClient();
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
-    <UserContextProvider>
-      <BooksContextProvider>
-        <App />
-      </BooksContextProvider>
-    </UserContextProvider>
+    <QueryClientProvider client={queryClient}>
+      <UserContextProvider>
+        <BooksContextProvider>
+          <App />
+        </BooksContextProvider>
+      </UserContextProvider>
+    </QueryClientProvider>
   </StrictMode>,
 )

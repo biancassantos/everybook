@@ -1,27 +1,24 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
+import { useSuspenseQuery } from "@tanstack/react-query";
 import useDebounce from "../../hooks/useDebounce";
 import bookApi from "../../services/api";
 import { IoSearch, IoClose } from "react-icons/io5"
 import SearchList from "./SearchList";
 import { formatToUrlParam } from "../../utils/helpers";
-import type { Book } from "../../@types";
 
 function Searchbar() {
   const [search, setSearch] = useState("")
   const [debouncedSearch, setDebouncedSearch] = useState("")
-  const [books, setBooks] = useState<Book[]>([])
 
   const debouncer = useDebounce(() => setDebouncedSearch(search), 1000);
+  const bookNameParam = formatToUrlParam(debouncedSearch);
 
   const clearSearch = () => setSearch("");
 
-  useEffect(() => {
-    if (debouncedSearch) {
-      bookApi
-        .getBooks(formatToUrlParam(debouncedSearch))
-        .then(data => setBooks(data))
-    }
-  }, [debouncedSearch])
+  const { data: books } = useSuspenseQuery({
+    queryKey: ["books", bookNameParam],
+    queryFn: () => bookApi.getBooks(bookNameParam)
+  });
 
   debouncer();
 
@@ -42,7 +39,7 @@ function Searchbar() {
         <IoClose className="text-primary text-xl" />
       </button>
 
-      {debouncedSearch != "" && <SearchList books={books} />}
+      {search != "" && <SearchList books={books} />}
     </section>
   )
 }

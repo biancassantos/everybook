@@ -1,7 +1,8 @@
-import { useEffect, useState, useContext } from "react";
+import { useContext } from "react";
 import { useParams } from "react-router";
 import { UserContext } from "../../contexts/UserContext";
 import { BooksContext } from "../../contexts/BooksContext";
+import { useSuspenseQuery } from "@tanstack/react-query";
 import bookApi from "../../services/api";
 import { isBookRead } from "../../utils/helpers";
 import IndividualBook from "./components/IndividualBook";
@@ -10,14 +11,18 @@ import Rating from "./components/Rating";
 import ReadButton from "./components/ReadButton";
 import ReadingButton from "./components/ReadingButton";
 import WantsToReadButton from "./components/WantsToReadButton";
-import type { Book, UserBook } from "../../@types";
+import type { UserBook } from "../../@types";
 
 function BookPage() {
-  const [book, setBook] = useState<Book | null>(null);
   const { name, key } = useParams();
 
   const currentUser = useContext(UserContext);
   const books = useContext(BooksContext);
+
+  const { data: book } = useSuspenseQuery({
+    queryKey: ["individualBook", name, key],
+    queryFn: () => bookApi.getBook(name as string, key as string)
+  });
 
   const bookIsRead = isBookRead(books?.allBooks as UserBook[], book?.key as string);
 
@@ -36,14 +41,6 @@ function BookPage() {
     is_favorite: false,
     rating: 0
   }
-
-  useEffect(() => {
-    if (name && key) {
-      bookApi
-        .getBook(name, key)
-        .then(data => setBook(data[0]))
-    }
-  }, [name, key])
 
   if (!book) return <h1>Loading...</h1>
 
