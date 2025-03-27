@@ -1,7 +1,30 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
+import useDebounce from "../../../hooks/useDebounce";
+import { BooksContext } from "../../../contexts/BooksContext";
+import { updateBook } from "../../../services/firebase";
+import { bookExists } from "../../../utils/helpers";
+import type { UserBook } from "../../../@types";
 
-function Rating() {
-  const [rating, setRating] = useState(0)
+function Rating({ bookKey }: {bookKey: string}) {
+  const [rating, setRating] = useState(0);
+
+  const books = useContext(BooksContext);
+  const debouncer = useDebounce(() => updateRating(), 1000);
+
+  const book = bookExists(books?.allBooks as UserBook[], bookKey);
+  const id = book?.id ? book.id : undefined;
+
+  const updateRating = () => {
+    if (book && id)
+      updateBook(id , {...book, rating: rating});
+  }
+
+  const handleChange = (value: number) => {
+    setRating(value);
+    debouncer();
+  }
+
+  if (!book) return <p>Loading...</p>
 
   return (
     <section className="flex flex-col gap-3 justify-self-start self-center sm:self-start">
@@ -16,12 +39,12 @@ function Rating() {
         min={0} 
         max={5} 
         step={0.5}
-        value={rating}
-        onChange={e => setRating(Number(e.target.value))}
+        defaultValue={!book?.rating ? rating : book?.rating}
+        onChange={e => handleChange(Number(e.target.value))}
         className="accent-primary"
         />
         <p className="font-semibold text-xl">
-          {rating}
+          {!book?.rating ? rating : book?.rating}
         </p>
       </div>
     </section>

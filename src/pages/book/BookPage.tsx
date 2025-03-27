@@ -1,7 +1,9 @@
 import { useEffect, useState, useContext } from "react";
 import { useParams } from "react-router";
 import { UserContext } from "../../contexts/UserContext";
+import { BooksContext } from "../../contexts/BooksContext";
 import bookApi from "../../services/api";
+import { isBookRead } from "../../utils/helpers";
 import IndividualBook from "./components/IndividualBook";
 import BookInfo from "./components/BookInfo";
 import Rating from "./components/Rating";
@@ -15,6 +17,9 @@ function BookPage() {
   const { name, key } = useParams();
 
   const currentUser = useContext(UserContext);
+  const books = useContext(BooksContext);
+
+  const bookIsRead = isBookRead(books?.allBooks as UserBook[], book?.key as string);
 
   const newBook: UserBook = {
     title: book?.title as string,
@@ -63,7 +68,8 @@ function BookPage() {
           <ReadingButton newBook={newBook} />
           <WantsToReadButton newBook={newBook} />
         </div>
-        <Rating />
+
+        {bookIsRead && <Rating bookKey={book.key} />}
       </section>
     </section>
   )
