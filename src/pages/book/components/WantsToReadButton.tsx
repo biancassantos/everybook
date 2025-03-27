@@ -22,7 +22,7 @@ function WantsToReadButton({ newBook }: {newBook: UserBook}) {
 
     } else {
       if (books?.booksCollectionRef)
-        addBook(books?.booksCollectionRef, {...newBook, reading: true});
+        addBook(books?.booksCollectionRef, {...newBook, wants_to_read: true});
     }
   }
 
