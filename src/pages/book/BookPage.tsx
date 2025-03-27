@@ -56,6 +56,7 @@ function BookPage() {
         bookTitle={book.title}
         author={book.author_name}
         year={book.first_publish_year}
+        bookKey={book.key}
         />
         <div className="flex justify-center gap-6 flex-wrap self-center sm:justify-normal sm:self-start">
           <ReadButton newBook={newBook} />
