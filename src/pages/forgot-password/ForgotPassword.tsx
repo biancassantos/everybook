@@ -1,12 +1,11 @@
-import { useContext } from "react";
+import useUserContext from "../../hooks/useUserContext";
 import { Navigate } from "react-router";
-import { UserContext } from "../../contexts/UserContext";
 import AuthPageLayout from "../../layouts/auth-page/AuthPageLayout";
 import ForgotPasswordForm from "./components/ForgotPasswordForm";
 import Spinner from "../../components/Spinner";
 
 function ForgotPassword() {
-  const currentUser = useContext(UserContext);
+  const currentUser = useUserContext();
 
   if (currentUser?.isAuthPending) return <Spinner />;
 

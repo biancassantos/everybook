@@ -1,12 +1,11 @@
-import { useContext } from "react";
+import useUserContext from "../../hooks/useUserContext";
 import { Navigate } from "react-router";
-import { UserContext } from "../../contexts/UserContext";
 import AuthPageLayout from "../../layouts/auth-page/AuthPageLayout";
 import RegisterForm from "./components/RegisterForm";
 import Spinner from "../../components/Spinner";
 
 function Register() {
-  const currentUser = useContext(UserContext);
+  const currentUser = useUserContext();
 
   if (currentUser?.isAuthPending) return <Spinner />;
 

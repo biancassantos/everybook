@@ -1,10 +1,10 @@
-import { useState, useEffect, useContext } from "react";
-import { UserContext } from "../../contexts/UserContext";
+import { useState, useEffect } from "react";
+import useUserContext from "../../hooks/useUserContext";
 
 function Greeting() {
   const [timeOfDay, setTimeOfDay] = useState("morning");
 
-  const currentUser = useContext(UserContext);
+  const currentUser = useUserContext();
 
   const name = currentUser?.user?.displayName;
 

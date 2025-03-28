@@ -1,5 +1,4 @@
-import { useContext } from "react";
-import { UserContext } from "../../../contexts/UserContext";
+import useUserContext from "../../../hooks/useUserContext";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -23,7 +22,7 @@ function DisplayNameForm() {
     }
   } = useForm({resolver: zodResolver(displayNameSchema)});
 
-  const currentUser = useContext(UserContext);
+  const currentUser = useUserContext();
 
   const newDisplayName = watch("newDisplayName");
 
