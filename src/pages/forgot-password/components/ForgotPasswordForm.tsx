@@ -1,3 +1,4 @@
+import { Link } from "react-router";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -38,30 +39,40 @@ function ForgotPasswordForm() {
   if (isSubmitSuccessful) return <ConfirmationMessage email={email} />;
 
   return (
-    <form 
-    onSubmit={handleSubmit(onSubmit)}
-    className="flex flex-col gap-4 w-full max-w-[350px]"
-    >
-      <section className="flex flex-col">
-        <label 
-        htmlFor="email"
-        className={labelClass}
-        >
-          Please inform you e-mail address:
-        </label>
-        <input
-        type="text"
-        id="email"
-        {...register("email")}
-        className={classNames(inputClass, {"border-red-500": errors.email})}
+    <section className="flex flex-col items-center gap-8 w-full max-w-[400px]">
+      <p className="text-center">Please inform the e-mail address associated with your account to reset your password.</p>
+      <form 
+      onSubmit={handleSubmit(onSubmit)}
+      className="flex flex-col gap-4 w-full max-w-[350px]"
+      >
+        <section className="flex flex-col">
+          <label 
+          htmlFor="email"
+          className={labelClass}
+          >
+            E-mail:
+          </label>
+          <input
+          type="text"
+          id="email"
+          {...register("email")}
+          className={classNames(inputClass, {"border-red-500": errors.email})}
+          />
+          {errors.email && <span className={errorClass}>{errors.email.message}</span>}
+        </section>
+        <AuthButton 
+        disabled={isSubmitting ? true : false} 
+        text="Reset password"
         />
-        {errors.email && <span className={errorClass}>{errors.email.message}</span>}
-      </section>
-      <AuthButton 
-      disabled={isSubmitting ? true : false} 
-      text="Send reset link"
-      />
-    </form>
+
+        <Link 
+        to="/"
+        className="self-center p-3 hover:text-primarydark duration-300"
+        >
+          Cancel
+        </Link>
+      </form>
+    </section>
   )
 }
 
