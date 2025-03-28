@@ -19,6 +19,7 @@ function NextReadings() {
         author={book.author_name}
         coverUrl={book.coverUrl}
         bookUrl={book.book_url}
+        bookKey={book.key}
         />
       })}
     </BookListLayout>
