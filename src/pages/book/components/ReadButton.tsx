@@ -14,7 +14,7 @@ function ReadButton({ newBook }: {newBook: UserBook}) {
 
   const onClick = () => {
     if (book && bookIsRead && id) {
-      updateBook(id , {...book, read: false});
+      updateBook(id , {...book, read: false, is_favorite: false, rating: 0});
 
     } else if (book && !bookIsRead && id) {
       updateBook(id, {...book, read: true});
