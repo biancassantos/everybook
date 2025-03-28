@@ -1,11 +1,10 @@
-import { useContext } from "react";
-import { BooksContext } from "../../../contexts/BooksContext";
+import useBooksContext from "../../../hooks/useBooksContext";
 import FavoriteButton from "./FavoriteButton";
 import { isBookRead } from "../../../utils/helpers";
 import type { BookProps, UserBook } from "../../../@types";
 
 function BookInfo({ bookTitle, author, year, bookKey }: BookProps) {
-  const books = useContext(BooksContext);
+  const books = useBooksContext();
 
   const bookIsRead = isBookRead(books?.allBooks as UserBook[], bookKey as string);
 

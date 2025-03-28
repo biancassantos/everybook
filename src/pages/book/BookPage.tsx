@@ -1,7 +1,6 @@
-import { useContext } from "react";
 import { useParams } from "react-router";
 import useUserContext from "../../hooks/useUserContext";
-import { BooksContext } from "../../contexts/BooksContext";
+import useBooksContext from "../../hooks/useBooksContext";
 import { useSuspenseQuery } from "@tanstack/react-query";
 import bookApi from "../../services/api";
 import { isBookRead } from "../../utils/helpers";
@@ -18,7 +17,7 @@ function BookPage() {
   const { name, key } = useParams();
 
   const currentUser = useUserContext();
-  const books = useContext(BooksContext);
+  const books = useBooksContext();
 
   const { data: book, isPending, isFetching } = useSuspenseQuery({
     queryKey: ["individualBook", name, key],

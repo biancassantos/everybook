@@ -1,11 +1,10 @@
-import { useContext } from "react";
-import { BooksContext } from "../../contexts/BooksContext";
+import useBooksContext from "../../hooks/useBooksContext";
 import BookListLayout from "../../layouts/BookListLayout"
 import BookListItem from "../../components/BookListItem"
 import EmptyMessage from "../../components/EmptyMessage";
 
 function NextReadings() {
-  const books = useContext(BooksContext);
+  const books = useBooksContext();
   const nextBooks = books?.allBooks.filter(book => book.wants_to_read === true);
 
   if (nextBooks && nextBooks?.length == 0) return <EmptyMessage msg="No books to read next." />

@@ -1,6 +1,6 @@
-import { useState, useContext } from "react";
+import { useState } from "react";
+import useBooksContext from "../../../hooks/useBooksContext";
 import useDebounce from "../../../hooks/useDebounce";
-import { BooksContext } from "../../../contexts/BooksContext";
 import { updateBook } from "../../../services/firebase";
 import { bookExists } from "../../../utils/helpers";
 import type { UserBook } from "../../../@types";
@@ -8,7 +8,7 @@ import type { UserBook } from "../../../@types";
 function Rating({ bookKey }: {bookKey: string}) {
   const [rating, setRating] = useState(0);
 
-  const books = useContext(BooksContext);
+  const books = useBooksContext();
   const debouncer = useDebounce(() => updateRating(), 1000);
 
   const book = bookExists(books?.allBooks as UserBook[], bookKey);

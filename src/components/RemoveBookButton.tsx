@@ -1,5 +1,4 @@
-import { useContext } from "react";
-import { BooksContext } from "../contexts/BooksContext";
+import useBooksContext from "../hooks/useBooksContext";
 import { updateBook } from "../services/firebase";
 import { bookExists, wantsToReadBook, isReadingBook } from "../utils/helpers";
 import { MdDelete } from "react-icons/md";
@@ -7,7 +6,7 @@ import { toast } from "sonner";
 import type { UserBook } from "../@types";
 
 function RemoveBookButton({ bookKey }: {bookKey: string}) {
-  const books = useContext(BooksContext);
+  const books = useBooksContext();
     
   const book = bookExists(books?.allBooks as UserBook[], bookKey);
   const wantsToRead = wantsToReadBook(books?.allBooks as UserBook[], bookKey);

@@ -1,12 +1,11 @@
-import { useContext } from "react";
-import { BooksContext } from "../../../contexts/BooksContext";
+import useBooksContext from "../../../hooks/useBooksContext";
 import { bookExists, isBookFavorite } from "../../../utils/helpers";
 import { updateBook } from "../../../services/firebase";
 import { MdFavoriteBorder, MdFavorite } from "react-icons/md";
 import type { UserBook } from "../../../@types";
 
 function FavoriteButton({ bookKey }: {bookKey: string}) {
-  const books = useContext(BooksContext);
+  const books = useBooksContext();
 
   const book = bookExists(books?.allBooks as UserBook[], bookKey);
   const bookIsFavorite = isBookFavorite(books?.allBooks as UserBook[], bookKey);

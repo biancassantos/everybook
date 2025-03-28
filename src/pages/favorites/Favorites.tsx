@@ -1,11 +1,10 @@
-import { useContext } from "react";
-import { BooksContext } from "../../contexts/BooksContext";
+import useBooksContext from "../../hooks/useBooksContext";
 import BookshelfLayout from "../../layouts/BookshelfLayout";
 import ShelfBook from "../../components/ShelfBook";
 import EmptyMessage from "../../components/EmptyMessage";
 
 function Favorites() {
-  const books = useContext(BooksContext);
+  const books = useBooksContext();
   const readBooks = books?.allBooks.filter(book => book.is_favorite === true);
 
   if (readBooks && readBooks?.length == 0) return <EmptyMessage msg="No books marked as favorite." />;
