@@ -11,10 +11,12 @@ import NextReadings from "./pages/next-readings/NextReadings";
 import Favorites from "./pages/favorites/Favorites";
 import Settings from "./pages/settings/Settings";
 import NotFound from "./pages/not-found/NotFound";
+import { Toaster } from "sonner";
 
 function App() {
   return (
     <BrowserRouter>
+      <Toaster position="top-right" richColors /> {/* Toast notifications config */}
       <Routes>
         <Route element={<PrivateRoute />}>
           <Route element={<MainLayout />}>

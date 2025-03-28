@@ -3,6 +3,7 @@ import { BooksContext } from "../contexts/BooksContext";
 import { updateBook } from "../services/firebase";
 import { bookExists, wantsToReadBook, isReadingBook } from "../utils/helpers";
 import { MdDelete } from "react-icons/md";
+import { toast } from "sonner";
 import type { UserBook } from "../@types";
 
 function RemoveBookButton({ bookKey }: {bookKey: string}) {
@@ -13,6 +14,8 @@ function RemoveBookButton({ bookKey }: {bookKey: string}) {
   const isReading = isReadingBook(books?.allBooks as UserBook[], bookKey);
   const id = book?.id ? book.id : undefined;
 
+  const deleted = () => toast(`${book?.title} was removed from the list`);
+
   const onClick = () => {
     if (book && id && wantsToRead) {
       updateBook(id , {...book, wants_to_read: false});
@@ -20,6 +23,8 @@ function RemoveBookButton({ bookKey }: {bookKey: string}) {
     } else if (book && id && isReading) {
       updateBook(id, {...book, reading: false});
     }
+
+    deleted();
   }
 
   return (

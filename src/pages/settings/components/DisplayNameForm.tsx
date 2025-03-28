@@ -6,6 +6,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import classNames from "classnames";
 import ActionButton from "../../../components/ActionButton";
 import { changeDisplayName } from "../../../services/firebase";
+import { toast } from "sonner";
 
 const displayNameSchema = z.object({
   newDisplayName: z.string().nonempty("Display name must be at least 1 character long").refine(displayName => !displayName.includes(" "), {message: "The display name must consist of only one word"})
@@ -30,11 +31,19 @@ function DisplayNameForm() {
   const inputClass = "border border-[#A4A4A4] rounded-md py-1 px-2 w-full";
   const errorClass = "text-sm text-red-500";
 
+  const success = () => toast.success("Name updated successfully!");
+  const fail = () => toast.error("Failed to update name");
+
   const onSubmit = async () => {
     try {
       await changeDisplayName(newDisplayName);
+      success();
+      setTimeout(() => {
+        window.location.reload();
+      }, 1000);
     } catch (error) {
       console.error(error);
+      fail();
     }
   }
 

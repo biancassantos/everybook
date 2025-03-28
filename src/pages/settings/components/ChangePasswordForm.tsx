@@ -6,6 +6,7 @@ import classNames from "classnames";
 import ActionButton from "../../../components/ActionButton";
 import { changeUserPassword } from "../../../services/firebase";
 import { getErrorMessage } from "../../../utils/helpers";
+import { toast } from "sonner";
 
 const changePasswordSchema = z.object({
   password: z.string().min(8, {message: "Password must be at least 8 characters long"}).nonempty(),
@@ -32,12 +33,17 @@ function ChangePasswordForm() {
   const inputClass = "border border-[#A4A4A4] rounded-md py-1 px-2 w-full";
   const errorClass = "text-sm text-red-500";
 
+  const success = () => toast.success("Password changed successfully!");
+  const fail = () => toast.error("Failed to change password");
+
   const onSubmit = async () => {
     try {
       await changeUserPassword(password, newPassword);
+      success();
     } catch (error) {
       const message = getErrorMessage(error);
       if (message) setGeneralError(message);
+      fail();
     }
   }
 
