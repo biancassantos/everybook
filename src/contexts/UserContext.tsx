@@ -13,12 +13,17 @@ type User = {
 
 type ContextValue = {
   user: User | null,
-  isAuthPending: boolean
+  isAuthPending: boolean,
+  isGoogleUser: boolean | undefined,
+  isEmailUser: boolean | undefined
 }
 
 export function UserContextProvider({ children }: NodeChildrenProps) {
   const [user, setUser] = useState<User | null>(null);
   const [isAuthPending, setIsAuthPending] = useState(true);
+
+  const isGoogleUser = auth.currentUser?.providerData.some(provider => provider.providerId === "google.com");
+  const isEmailUser = auth.currentUser?.providerData.some(provider => provider.providerId === "password");
 
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged(data => {
@@ -39,7 +44,7 @@ export function UserContextProvider({ children }: NodeChildrenProps) {
     return () => unsubscribe();
   }, [])
 
-  const value: ContextValue = { user, isAuthPending };
+  const value: ContextValue = { user, isAuthPending, isGoogleUser, isEmailUser };
 
   return <UserContext.Provider value={value}>
     { children }
