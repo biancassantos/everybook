@@ -17,12 +17,12 @@ function Modal({ modalRef }: ModalProps) {
   return (
     <dialog 
     ref={modalRef}
-    className="open:flex open:flex-col open:items-center open:gap-4 bg-white p-5 rounded-lg top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 "
+    className="open:flex open:flex-col open:items-center open:gap-4 bg-white p-5 rounded-lg top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-5/6 max-w-[380px]"
     >
       <h3 className="text-xl font-semibold">
         Confirm action
       </h3>
-      <p>Are you sure you want to continue?</p>
+      <p className="text-center">Are you sure you want to continue?</p>
 
       {currentUser?.isGoogleUser ? <DeleteGoogleUser /> : <DeleteEmailUser />}
 
