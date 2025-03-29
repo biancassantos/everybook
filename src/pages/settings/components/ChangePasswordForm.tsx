@@ -50,7 +50,7 @@ function ChangePasswordForm() {
   return (
     <form 
     onSubmit={handleSubmit(onSubmit)}
-    className="flex flex-col items-start gap-4 w-full max-w-[300px] mb-5"
+    className="flex flex-col items-start gap-4 w-full max-w-[300px]"
     >
       <section className="flex flex-col w-full">
         <label
