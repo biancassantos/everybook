@@ -1,6 +1,6 @@
 import { auth, db, googleProvider } from "../configs/firebase-config";
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword, signInWithPopup, signOut, sendPasswordResetEmail, updateProfile, EmailAuthProvider, reauthenticateWithCredential, updatePassword, GoogleAuthProvider, reauthenticateWithPopup, deleteUser } from "firebase/auth";
-import { addDoc, updateDoc, doc } from "firebase/firestore";
+import { addDoc, updateDoc, doc, deleteDoc } from "firebase/firestore";
 import type { BooksCollection, UserBook } from "../@types";
 
 export const signUpWithEmail = async (email: string, password: string) => {
@@ -70,6 +70,15 @@ export const updateBook = async (id: string, book: UserBook) => {
   try {
     const bookDoc = doc(db, "books", id);
     await updateDoc(bookDoc, book);
+  } catch (error) {
+    console.error(error);
+  }
+}
+
+export const deleteBook = async (id: string) => {
+  try {
+    const bookDoc = doc(db, "books", id);
+    await deleteDoc(bookDoc);
   } catch (error) {
     console.error(error);
   }

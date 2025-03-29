@@ -1,3 +1,4 @@
+import { deleteBook } from "../services/firebase";
 import { UserBook } from "../@types";
 
 /* Formats the book title into an url search text */
@@ -52,4 +53,11 @@ export const wantsToReadBook = (books: UserBook[], key: string) => {
 export const isBookFavorite = (books: UserBook[], key: string) => {
   const book = books.some(book => book.key === key && book.is_favorite === true);
   return book ? true : false;
+}
+
+/* Deletes all the books connected with the user's account */
+export const deleteAllUserBooks = (books: UserBook[]) => {
+  books.forEach(book => {
+    deleteBook(book.id as string);
+  })
 }

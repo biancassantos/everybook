@@ -1,10 +1,13 @@
+import useBooksContext from "../../../hooks/useBooksContext";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import classNames from "classnames";
 import { deleteUserAccount } from "../../../services/firebase";
+import { deleteAllUserBooks } from "../../../utils/helpers";
 import DeleteButton from "./DeleteButton";
 import { toast } from "sonner";
+import type { UserBook } from "../../../@types";
 
 const confirmPasswordSchema = z.object({
   password: z.string().min(8, {message: "Password must be at least 8 characters long"}).nonempty()
@@ -20,6 +23,8 @@ function DeleteEmailUser() {
       isSubmitting
     }} = useForm({resolver: zodResolver(confirmPasswordSchema)});
 
+  const books = useBooksContext();
+
   const password = watch("password");
 
   const labelClass = "text-sm mb-1";
@@ -29,6 +34,7 @@ function DeleteEmailUser() {
   const onSubmit = async () => {
     try {
       await deleteUserAccount(false, true, password);
+      deleteAllUserBooks(books?.allBooks as UserBook[]);
       toast.success("Your account was successfully deleted");
     } catch (error) {
       console.error(error);
