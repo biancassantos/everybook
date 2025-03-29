@@ -1,6 +1,7 @@
 import { useNavigate } from "react-router";
 import DisplayNameForm from "./components/DisplayNameForm";
 import ChangePasswordForm from "./components/ChangePasswordForm";
+import DeleteUserArea from "./components/DeleteUserArea";
 import SectionHeader from "./components/SectionHeader";
 import ActionButton from "../../components/ActionButton";
 
@@ -12,14 +13,19 @@ function Settings() {
       <h1 className="text-3xl text-primary font-semibold xs:text-4xl">
         Settings
       </h1>
-      <section className="self-stretch">
+      <section className="self-stretch mb-4">
         <SectionHeader>User</SectionHeader>
         <DisplayNameForm />
       </section>
 
-      <section className="self-stretch">
+      <section className="self-stretch mb-4">
         <SectionHeader>Password</SectionHeader>
         <ChangePasswordForm />
+      </section>
+
+      <section className="self-stretch mb-5">
+        <SectionHeader>Account</SectionHeader>
+        <DeleteUserArea />
       </section>
       
       <ActionButton
