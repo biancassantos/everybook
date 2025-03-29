@@ -1,5 +1,5 @@
 import { auth, db, googleProvider } from "./firebase-config";
-import { createUserWithEmailAndPassword, signInWithEmailAndPassword, signInWithPopup, signOut, sendPasswordResetEmail, updateProfile, EmailAuthProvider, reauthenticateWithCredential, updatePassword } from "firebase/auth";
+import { createUserWithEmailAndPassword, signInWithEmailAndPassword, signInWithPopup, signOut, sendPasswordResetEmail, updateProfile, EmailAuthProvider, reauthenticateWithCredential, updatePassword, GoogleAuthProvider, reauthenticateWithPopup, deleteUser } from "firebase/auth";
 import { addDoc, updateDoc, doc } from "firebase/firestore";
 import type { BooksCollection, UserBook } from "../@types";
 
@@ -39,6 +39,22 @@ export const changeUserPassword = async (password: string, newPassword: string) 
     const credential = EmailAuthProvider.credential(email, password);
     await reauthenticateWithCredential(auth.currentUser, credential);
     await updatePassword(auth.currentUser, newPassword);
+  }
+}
+
+export const deleteUserAccount = async (isGoogleUser: boolean, isEmailUser: boolean, password?: string) => {
+  if (auth.currentUser) {
+    if (isGoogleUser) {
+      const googleProvider = new GoogleAuthProvider();
+      await reauthenticateWithPopup(auth.currentUser, googleProvider);
+      await deleteUser(auth.currentUser);
+
+    } else if (isEmailUser) {
+      const email = auth.currentUser.email as string;
+      const credential = EmailAuthProvider.credential(email, password as string);
+      await reauthenticateWithCredential(auth.currentUser, credential);
+      await deleteUser(auth.currentUser);
+    }
   }
 }
 
