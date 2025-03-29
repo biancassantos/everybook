@@ -1,5 +1,5 @@
 import { createContext, useState, useEffect } from "react";
-import { auth } from "../services/firebase-config";
+import { auth } from "../configs/firebase-config";
 import { getUserFirstName } from "../utils/helpers";
 import { NodeChildrenProps } from "../@types";
 

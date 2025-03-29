@@ -1,6 +1,6 @@
 import { createContext, useState, useEffect } from "react";
 import useUserContext from "../hooks/useUserContext";
-import { db } from "../services/firebase-config";
+import { db } from "../configs/firebase-config";
 import { collection } from "firebase/firestore";
 import { onSnapshot } from "firebase/firestore";
 import type { NodeChildrenProps, BooksCollection, UserBook } from "../@types";

@@ -1,4 +1,4 @@
-import { auth, db, googleProvider } from "./firebase-config";
+import { auth, db, googleProvider } from "../configs/firebase-config";
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword, signInWithPopup, signOut, sendPasswordResetEmail, updateProfile, EmailAuthProvider, reauthenticateWithCredential, updatePassword, GoogleAuthProvider, reauthenticateWithPopup, deleteUser } from "firebase/auth";
 import { addDoc, updateDoc, doc } from "firebase/firestore";
 import type { BooksCollection, UserBook } from "../@types";
