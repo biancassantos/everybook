@@ -11,13 +11,13 @@ function SearchList({ books, clearSearch }: SearchListProps) {
   const booksPending = books.length == 0;
 
   return (
-    <section className="absolute top-10.5 right-4 max-w-[210px] max-h-[300px] bg-latte shadow-lg overflow-y-scroll z-index-90 sm:max-w-[260px] sm:w-[260px]">
+    <section className="absolute top-10.5 right-4 min-w-[210px] max-w-[210px] max-h-[300px] bg-latte shadow-lg overflow-y-scroll z-index-90 sm:max-w-[260px] sm:w-[260px]">
       {booksPending ? 
         <SearchingMessage /> :
         <ul>
           {books.map((book: Book) => {
             return <SearchListItem 
-            key={book.cover_edition_key}
+            key={book.key}
             bookTitle={book.title}
             author={book.author_name}
             coverUrl={`https://covers.openlibrary.org/b/olid/${book.cover_edition_key}-S.jpg`}
