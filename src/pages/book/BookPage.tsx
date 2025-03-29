@@ -33,7 +33,7 @@ function BookPage() {
     cover_edition_key: book?.cover_edition_key as string,
     key: book?.key as string,
     coverUrl: `https://covers.openlibrary.org/b/olid/${book?.cover_edition_key}-L.jpg`,
-    book_url: `http://localhost:5173/book/${name}/${key}`,
+    book_url: `https://everybook.vercel.app/book/${name}/${key}`,
     uid: currentUser?.user?.uid,
     read: false,
     reading: false,
