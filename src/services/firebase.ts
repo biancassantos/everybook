@@ -3,9 +3,6 @@ import { createUserWithEmailAndPassword, signInWithEmailAndPassword, signInWithP
 import { addDoc, updateDoc, doc } from "firebase/firestore";
 import type { BooksCollection, UserBook } from "../@types";
 
-const user = auth.currentUser;
-const userEmail = user?.email as string;
-
 export const signUpWithEmail = async (email: string, password: string) => {
   await createUserWithEmailAndPassword(auth, email, password);
 }
@@ -31,30 +28,32 @@ export const resetPassword = async (email: string) => {
 }
 
 export const changeDisplayName = async (newDisplayName: string) => {
-  if (user) {
-    await updateProfile(user, {displayName: newDisplayName});
+  if (auth.currentUser) {
+    await updateProfile(auth.currentUser, {displayName: newDisplayName});
   }
 }
 
 export const changeUserPassword = async (password: string, newPassword: string) => {
-  if (user) {
-    const credential = EmailAuthProvider.credential(userEmail, password);
-    await reauthenticateWithCredential(user, credential);
-    await updatePassword(user, newPassword);
+  if (auth.currentUser) {
+    const email = auth.currentUser?.email as string;
+    const credential = EmailAuthProvider.credential(email, password);
+    await reauthenticateWithCredential(auth.currentUser, credential);
+    await updatePassword(auth.currentUser, newPassword);
   }
 }
 
 export const deleteUserAccount = async (isGoogleUser: boolean, isEmailUser: boolean, password?: string) => {
-  if (user) {
+  if (auth.currentUser) {
     if (isGoogleUser) {
       const googleProvider = new GoogleAuthProvider();
-      await reauthenticateWithPopup(user, googleProvider);
-      await deleteUser(user);
+      await reauthenticateWithPopup(auth.currentUser, googleProvider);
+      await deleteUser(auth.currentUser);
 
     } else if (isEmailUser) {
-      const credential = EmailAuthProvider.credential(userEmail, password as string);
-      await reauthenticateWithCredential(user, credential);
-      await deleteUser(user);
+      const email = auth.currentUser?.email as string;
+      const credential = EmailAuthProvider.credential(email, password as string);
+      await reauthenticateWithCredential(auth.currentUser, credential);
+      await deleteUser(auth.currentUser);
     }
   }
 }
