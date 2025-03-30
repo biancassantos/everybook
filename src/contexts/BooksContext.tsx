@@ -1,4 +1,4 @@
-import { createContext, useState, useEffect } from "react";
+import { createContext, useState, useEffect, useMemo } from "react";
 import useUserContext from "../hooks/useUserContext";
 import { db } from "../configs/firebase-config";
 import { collection, onSnapshot } from "firebase/firestore";
@@ -16,7 +16,7 @@ export function BooksContextProvider({ children }: NodeChildrenProps) {
   const [allBooks, setAllBooks] = useState<UserBook[] | []>([]);
   const [allDbBooks, setAllDbBooks] = useState<UserBook[] | []>([]);
 
-  const booksCollectionRef = collection(db, "books");
+  const booksCollectionRef = useMemo(() => collection(db, "books"), []);
 
   const currentUser = useUserContext();
   const uid = currentUser?.user?.uid;
