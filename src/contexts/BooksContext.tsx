@@ -1,8 +1,8 @@
 import { createContext, useState, useEffect } from "react";
 import useUserContext from "../hooks/useUserContext";
 import { db } from "../configs/firebase-config";
-import { collection } from "firebase/firestore";
-import { onSnapshot } from "firebase/firestore";
+import { collection, onSnapshot } from "firebase/firestore";
+import { deleteBook } from "../services/firebase";
 import type { NodeChildrenProps, BooksCollection, UserBook } from "../@types";
 
 type ContextValue = {
@@ -14,27 +14,43 @@ export const BooksContext = createContext<ContextValue | null>(null);
 
 export function BooksContextProvider({ children }: NodeChildrenProps) {
   const [allBooks, setAllBooks] = useState<UserBook[] | []>([]);
+  const [allDbBooks, setAllDbBooks] = useState<UserBook[] | []>([]);
+
   const booksCollectionRef = collection(db, "books");
 
   const currentUser = useUserContext();
   const uid = currentUser?.user?.uid;
 
+  const cleanDb = () => {
+    allDbBooks.forEach(book => {
+      if (!book.read && !book.reading && !book.wants_to_read) {
+        deleteBook(book.id as string);
+      }
+    })
+  }
+
   useEffect(() => {
     const unsubscribe = onSnapshot(booksCollectionRef, snapshot => {
-      const list: unknown[] = [];
+      const userBooks: unknown[] = [];
+      const dbBooks: unknown[] = [];
 
       snapshot.docs.forEach(doc => {
         if (doc.data().uid === uid) {
-          list.push({...doc.data(), id: doc.id});
+          userBooks.push({...doc.data(), id: doc.id});
         }
+
+        dbBooks.push({...doc.data(), id: doc.id});
       });
 
-      setAllBooks(list as UserBook[]);
+      setAllBooks(userBooks as UserBook[]);
+      setAllDbBooks(dbBooks as UserBook[]);
     })
 
     return () => unsubscribe();
   }, [booksCollectionRef, uid])
 
+  cleanDb();
+    
   const value: ContextValue = { booksCollectionRef, allBooks }
 
   return <BooksContext.Provider value={value}>
