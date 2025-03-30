@@ -25,7 +25,7 @@ Olá, esse projeto é uma aplicação de uma estante de livros virtual, onde é 
 
 </br>
 
-![Design do projeto](https://raw.githubusercontent.com/biancassantos/pethelp/refs/heads/main/pethelp-design.png)
+![Design do projeto](https://raw.githubusercontent.com/biancassantos/everybook/refs/heads/main/public/project-preview.png)
 
 ## 🔎 Especificações
 ### Tecnologias:
