@@ -1,54 +1,59 @@
-# React + TypeScript + Vite
+# EveryBook
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## 📄 Sobre
+Olá, esse projeto é uma aplicação de uma estante de livros virtual, onde é possível manter registro de suas leituras.
 
-Currently, two official plugins are available:
+### Funcionalidades:
+- Criar/acessar uma conta com e-mail e senha;
+- Criar/acessar uma conta com sua conta Gmail;
+- Pesquisar livros;
+- Adicionar livros já lidos à estante;
+- Criar uma lista com livros que estão sendo lidos ou que serão lidos no futuro;
+- Marcar livros lidos como favoritos;
+- Adicionar nota de avaliação em livros lidos;
+- Alterar nome de display;
+- Alterar senha;
+- Deletar sua conta.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+### Objetivos:
+- Praticar o uso de APIs;
+- Praticar o uso do Firebase;
+- Praticar TypeScript.
 
-## Expanding the ESLint configuration
+### Links:
+- <a href="https://everybook.vercel.app" target="_blank">Página do projeto</a>
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+</br>
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+![Design do projeto](https://raw.githubusercontent.com/biancassantos/pethelp/refs/heads/main/pethelp-design.png)
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## 🔎 Especificações
+### Tecnologias:
+- JSX
+- Tailwindcss
+- TypeScript
+- React
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+### Dependências:
+- React Router
+- React Hook Form
+- Zod
+- axios
+- Tanstack Query
+- React Icons
+- classnames
+- sonner
 
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
-```
+### Back-end
+- Firebase Authentication
+- Firestore Database
+
+### APIs:
+- <a href="https://openlibrary.org/dev/docs/api/search" target="_blank">Open Library</a>
+
+</br>
+
+## 📁 Resources
+### Imagens:
+- De <a href="https://br.freepik.com/vetores-gratis/pilha-de-design-plano-desenhado-a-mao-de-ilustracao-de-livros_23974704.htm#fromView=search&page=1&position=23&uuid=49a9413d-f5ce-4db9-aeb4-2876ba10c20d&query=books" target="_blank">Freepik</a>
+- De <a href="https://www.flaticon.com/free-icon/bookshelf_5624872?term=bookshelf&page=4&position=67&origin=search&related_id=5624872" target="_blank">Flaticon</a>
