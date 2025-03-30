@@ -13,8 +13,6 @@ function RemoveBookButton({ bookKey }: {bookKey: string}) {
   const isReading = isReadingBook(books?.allBooks as UserBook[], bookKey);
   const id = book?.id ? book.id : undefined;
 
-  const deleted = () => toast(`${book?.title} was removed from the list`);
-
   const onClick = () => {
     if (book && id && wantsToRead) {
       updateBook(id , {...book, wants_to_read: false});
@@ -23,7 +21,7 @@ function RemoveBookButton({ bookKey }: {bookKey: string}) {
       updateBook(id, {...book, reading: false});
     }
 
-    deleted();
+    toast(`${book?.title} was removed from the list`);
   }
 
   return (

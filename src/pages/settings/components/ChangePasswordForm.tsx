@@ -33,17 +33,14 @@ function ChangePasswordForm() {
   const inputClass = "border border-[#A4A4A4] rounded-md py-1 px-2 w-full";
   const errorClass = "text-sm text-red-500";
 
-  const success = () => toast.success("Password changed successfully!");
-  const fail = () => toast.error("Failed to change password");
-
   const onSubmit = async () => {
     try {
       await changeUserPassword(password, newPassword);
-      success();
+      toast.success("Password changed successfully!");
     } catch (error) {
       const message = getErrorMessage(error);
       if (message) setGeneralError(message);
-      fail();
+      toast.error("Failed to change password");
     }
   }
 

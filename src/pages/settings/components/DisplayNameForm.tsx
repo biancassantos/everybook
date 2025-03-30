@@ -30,19 +30,16 @@ function DisplayNameForm() {
   const inputClass = "border border-[#A4A4A4] rounded-md py-1 px-2 w-full";
   const errorClass = "text-sm text-red-500";
 
-  const success = () => toast.success("Name updated successfully!");
-  const fail = () => toast.error("Failed to update name");
-
   const onSubmit = async () => {
     try {
       await changeDisplayName(newDisplayName);
-      success();
+      toast.success("Name updated successfully!");
       setTimeout(() => {
         window.location.reload(); /* Reloads the page so the new name renders (after 1 second, so the user is able to read the toast) */
       }, 1000);
     } catch (error) {
       console.error(error);
-      fail();
+      toast.error("Failed to update name");
     }
   }
 
