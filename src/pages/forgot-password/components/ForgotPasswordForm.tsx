@@ -61,7 +61,7 @@ function ForgotPasswordForm() {
           {errors.email && <span className={errorClass}>{errors.email.message}</span>}
         </section>
         <AuthButton 
-        disabled={isSubmitting ? true : false} 
+        disabled={isSubmitting} 
         text="Reset password"
         />
 
