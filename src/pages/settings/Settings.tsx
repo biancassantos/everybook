@@ -9,7 +9,7 @@ function Settings() {
   const navigate = useNavigate();
 
   return (
-    <section className="flex flex-col items-start gap-10 bg-latte rounded-lg py-10 px-5 text-primarydark max-w-[1500px] mx-auto xs:px-8">
+    <section className="flex flex-col items-start gap-10 bg-latte rounded-lg py-10 px-5 text-primarydark max-w-[1500px] mx-auto xs:px-8 sm:px-12">
       <h1 className="text-3xl text-primary font-semibold xs:text-4xl">
         Settings
       </h1>
