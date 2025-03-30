@@ -38,7 +38,7 @@ function DisplayNameForm() {
       await changeDisplayName(newDisplayName);
       success();
       setTimeout(() => {
-        window.location.reload();
+        window.location.reload(); /* Reloads the page so the new name renders (after 1 second, so the user is able to read the toast) */
       }, 1000);
     } catch (error) {
       console.error(error);

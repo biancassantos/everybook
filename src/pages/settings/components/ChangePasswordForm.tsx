@@ -24,7 +24,7 @@ function ChangePasswordForm() {
       }
     } = useForm({resolver: zodResolver(changePasswordSchema)});
 
-  const [generalError, setGeneralError] = useState("");
+  const [generalError, setGeneralError] = useState(""); /* Mainly Firebase errors */
 
   const password = watch("password");
   const newPassword = watch("newPassword");

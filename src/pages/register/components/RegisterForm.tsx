@@ -27,7 +27,7 @@ function RegisterForm() {
       isSubmitting
     }} = useForm({resolver: zodResolver(registerSchema)});
 
-  const [generalError, setGeneralError] = useState("");
+  const [generalError, setGeneralError] = useState(""); /* Mainly Firebase errors */
 
   const navigate = useNavigate();
 

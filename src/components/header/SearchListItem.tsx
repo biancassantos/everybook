@@ -8,7 +8,7 @@ type SearchListItemProps = BookProps & {
 
 function SearchListItem({ coverUrl, bookTitle, author, bookKey, clearSearch }: SearchListItemProps) {
   const formattedTitle = formatToUrlParam(bookTitle);
-  const formattedKey = (bookKey as string).split("/")[2];
+  const formattedKey = (bookKey as string).split("/")[2]; /* Gets only the key part of the string '/works/:key' */
 
   return (
     <li className="p-4 not-last:border-b border-b-primary">

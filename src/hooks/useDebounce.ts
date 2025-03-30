@@ -1,6 +1,6 @@
 import { useRef } from "react";
 
-/* Waits [delay] seconds to set the parameter text used in the api fetching to prevent too many requests */
+/* Waits [delay] seconds to execute a function in order to prevent too many requests */
 
 type CallbackFunction = () => void;
 

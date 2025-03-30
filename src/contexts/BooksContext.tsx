@@ -13,15 +13,15 @@ type ContextValue = {
 export const BooksContext = createContext<ContextValue | null>(null);
 
 export function BooksContextProvider({ children }: NodeChildrenProps) {
-  const [allBooks, setAllBooks] = useState<UserBook[] | []>([]);
-  const [allDbBooks, setAllDbBooks] = useState<UserBook[] | []>([]);
+  const [allBooks, setAllBooks] = useState<UserBook[] | []>([]); /* Books connected to the user account */
+  const [allDbBooks, setAllDbBooks] = useState<UserBook[] | []>([]); /* All the books in the database */
 
   const booksCollectionRef = useMemo(() => collection(db, "books"), []);
 
   const currentUser = useUserContext();
   const uid = currentUser?.user?.uid;
 
-  const cleanDb = () => {
+  const cleanDb = () => { /* Deletes all the 'loose' books in the database */
     allDbBooks.forEach(book => {
       if (!book.read && !book.reading && !book.wants_to_read) {
         deleteBook(book.id as string);

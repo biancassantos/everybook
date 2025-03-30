@@ -27,7 +27,7 @@ function AuthPageLayout({ title, question, linkText, linkUrl, isFullLayout, chil
             <span className="text-sm">
               Or
             </span>
-            {children}
+            {children} {/* For login and register pages */}
             <p className="text-sm">
               {question} 
               <Link 
@@ -40,7 +40,7 @@ function AuthPageLayout({ title, question, linkText, linkUrl, isFullLayout, chil
           </>
         ) : (
           <>
-            {children}
+            {children} {/* For forgot password and confirmation pages */}
           </>
         )}
       </section>

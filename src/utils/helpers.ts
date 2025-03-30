@@ -14,6 +14,7 @@ export const getErrorMessage = (error: unknown) => {
 
     } else if (error.message.includes("invalid-credential")) {
       return "Invalid credentials";
+      
     } else {
       return "It was not possible to complete the action";
     }
@@ -29,7 +30,7 @@ export const getUserFirstName = (displayName: string | null) => {
   return displayName.split(" ")[0];
 }
 
-/* Functions for checking if the book exists in the db and it's state */
+/* Functions for checking if the book exists in the database and it's state */
 export const bookExists = (books: UserBook[], key: string) => {
   const book = books.filter(book => book.key === key );
   return book ? book[0] : null;

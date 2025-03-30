@@ -23,7 +23,7 @@ function LoginForm() {
       isSubmitting
     }} = useForm({resolver: zodResolver(loginSchema)});
 
-  const [generalError, setGeneralError] = useState("");
+  const [generalError, setGeneralError] = useState(""); /* Mainly Firebase errors */
 
   const navigate = useNavigate();
 

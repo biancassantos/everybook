@@ -22,10 +22,11 @@ export function UserContextProvider({ children }: NodeChildrenProps) {
   const [user, setUser] = useState<User | null>(null);
   const [isAuthPending, setIsAuthPending] = useState(true);
 
+  /* Checks the auth provider */
   const isGoogleUser = auth.currentUser?.providerData.some(provider => provider.providerId === "google.com");
   const isEmailUser = auth.currentUser?.providerData.some(provider => provider.providerId === "password");
 
-  useEffect(() => {
+  useEffect(() => { /* Gets the user data every time the auth state changes */
     const unsubscribe = auth.onAuthStateChanged(data => {
       if (data) {
         const userData: User = {
@@ -35,7 +36,7 @@ export function UserContextProvider({ children }: NodeChildrenProps) {
         }
         setUser(userData);
       } else {
-        setUser(null);
+        setUser(null); /* No user logged in */
       }
       
       setIsAuthPending(false);

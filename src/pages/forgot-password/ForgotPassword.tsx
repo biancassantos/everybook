@@ -9,7 +9,7 @@ function ForgotPassword() {
 
   if (currentUser?.isAuthPending) return <Spinner />;
 
-  if (currentUser?.user) return <Navigate to="/" />;
+  if (currentUser?.user) return <Navigate to="/" />; /* Not accessible to logged user */
 
   return (
     <AuthPageLayout
