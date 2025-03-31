@@ -1,7 +1,9 @@
 # EveryBook
 
 ## 📄 Sobre
-Olá, esse projeto é uma aplicação de uma estante de livros virtual, onde é possível manter registro de suas leituras.
+Olá, esse projeto é uma aplicação que funciona como uma estante de livros virtual, onde é possível manter registro de suas leituras.
+
+A API permite que os títulos sejam pesquisados tanto em inglês quanto em português, apesar de às vezes aparecerem mais em inglês.
 
 ### Funcionalidades:
 - Criar/acessar uma conta com e-mail e senha;
@@ -11,7 +13,7 @@ Olá, esse projeto é uma aplicação de uma estante de livros virtual, onde é 
 - Criar uma lista com livros que estão sendo lidos ou que serão lidos no futuro;
 - Marcar livros lidos como favoritos;
 - Adicionar nota de avaliação em livros lidos;
-- Alterar nome de display;
+- Personalizar seu nome;
 - Alterar senha;
 - Deletar sua conta.
 
@@ -29,11 +31,11 @@ Olá, esse projeto é uma aplicação de uma estante de livros virtual, onde é 
 
 ## 🔎 Especificações
 ### Tecnologias:
-- JSX
-- Tailwindcss
-- TypeScript
 - React
-
+- TypeScript
+- Tailwindcss
+- JSX
+  
 ### Dependências:
 - React Router
 - React Hook Form
